@@ -1143,6 +1143,10 @@ void webUiInit() {
     // Prevent the WiFi driver from writing SSID/pass to NVS on its own
     WiFi.persistent(false);
 
+    // Clear any WiFi NVS state (MAC, protocol, mode) left by a previous
+    // session (e.g. ELRS ESP-NOW with WIFI_PROTOCOL_LR).
+    esp_wifi_restore();
+
     // Clean driver state before any mode start to avoid residual STA/AP state
     // after repeated restarts or previous failed connections.
     WiFi.disconnect(true, true);

@@ -130,6 +130,8 @@ void elrsInit() {
     s_lastEnableMs = 0;
     s_wasActive = false;
 
+    WiFi.persistent(false);
+
     // WiFi STA mode for ESP-NOW on channel 1
     WiFi.mode(WIFI_STA);
     WiFi.setTxPower(WIFI_POWER_8_5dBm);
